@@ -8,18 +8,37 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
 
+    let img = ["1","2","3","4"]
+    @IBOutlet weak var TableView: UITableView!
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        TableView.dataSource = self
+        TableView.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
 
-
+    // MARK : - UITableViewDatasource
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return img.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell : MyCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCell
+        cell.myimage.image = UIImage(named: self.img[indexPath.row])
+        cell.mylabel.text = self.img[indexPath.row]
+        return cell
+    }
 }
-
