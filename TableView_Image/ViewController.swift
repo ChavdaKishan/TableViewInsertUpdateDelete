@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
 
-    let img = ["1","2","3","4"]
+    var img = ["1","2","3","4"]
     @IBOutlet weak var TableView: UITableView!
     override func viewDidLoad() {
         
@@ -40,5 +40,21 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         cell.myimage.image = UIImage(named: self.img[indexPath.row])
         cell.mylabel.text = self.img[indexPath.row]
         return cell
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            self.img.remove(at: indexPath.row)
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            NSLog("Row %i deleted", indexPath.row)
+           tableView.reloadData()
+        }
+        else if editingStyle == .insert
+        {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    
     }
 }
