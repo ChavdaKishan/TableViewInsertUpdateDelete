@@ -8,21 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
-
-    var img = ["1","2","3","4"]
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
+{
+    @IBOutlet weak var TextField: UITextField!
     @IBOutlet weak var TableView: UITableView!
-    override func viewDidLoad() {
-        
+    
+    var arr = ["montu","chintan","kishan","sunil","shilesh","sagar","harshad"]
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        TableView.dataSource = self
-        TableView.delegate = self
-        
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
-       
     }
 
     // MARK : - UITableViewDatasource
@@ -32,29 +32,31 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return img.count
+        return arr.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell : MyCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCell
-        cell.myimage.image = UIImage(named: self.img[indexPath.row])
-        cell.mylabel.text = self.img[indexPath.row]
+        let cell : MyCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
+        cell.Lbl.text = arr[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-    {
+    {        
         if editingStyle == .delete
         {
-            self.img.remove(at: indexPath.row)
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            NSLog("Row %i deleted", indexPath.row)
-           tableView.reloadData()
+            arr.remove(at: indexPath.row)
+            /*tableView.deleteRows(at: [indexPath], with: .automatic)
+            NSLog("Row %i Deleted", indexPath.row)*/
+            tableView.reloadData()
         }
-        else if editingStyle == .insert
-        {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
+    }
     
+    @IBAction func AddClick(_ sender: Any)
+    {
+        arr.append(TextField.text!)
+        /*let index = IndexPath(row: arr.count - 1, section: 0)
+        TableView.insertRows(at: [index], with: .automatic)*/
+        TextField.text = ""
+        TableView.reloadData()
     }
 }
