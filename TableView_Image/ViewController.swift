@@ -50,13 +50,27 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             tableView.reloadData()
         }
     }
-    
+    /*func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle
+    {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+    }*/
+
     @IBAction func AddClick(_ sender: Any)
     {
-        arr.append(TextField.text!)
-        /*let index = IndexPath(row: arr.count - 1, section: 0)
-        TableView.insertRows(at: [index], with: .automatic)*/
-        TextField.text = ""
-        TableView.reloadData()
+        if TextField.text != ""
+        {
+            arr.append(TextField.text!)
+            /*let index = IndexPath(row: arr.count - 1, section: 0)
+             TableView.insertRows(at: [index], with: .automatic)*/
+            TextField.text = ""
+            TableView.reloadData()
+        }
+//        TableView.setEditing(true, animated: true)
     }
 }
