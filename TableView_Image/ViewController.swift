@@ -52,18 +52,23 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }*/
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
-        let Edit = UITableViewRowAction(style: .normal, title: "update"){
-            action,indexPath in
-            self.performSegue(withIdentifier: "Edit", sender: self)
-            
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            let alert = UIAlertController(title: "Edit", message: "Enter:", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: nil)
+            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
+                self.arr[indexPath.row] = (alert.textFields?.first?.text)!
+                self.TableView.reloadRows(at: [indexPath], with: .fade)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert,animated: false)
         }
-        
-        let delete = UITableViewRowAction(style: .default, title: "delete"){
+        let delete = UITableViewRowAction(style: .default, title: "delete")
+        {
             action,indexPath in
-             self.arr.remove(at: indexPath.row)
+            self.arr.remove(at: indexPath.row)
             self.TableView.reloadData()
         }
-        return [Edit,delete]
+        return [edit,delete]
     }
     
     /*func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle
