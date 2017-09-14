@@ -89,11 +89,50 @@
                     <connections>
                         <outlet property="TableView" destination="ZMw-w1-tsH" id="AqX-HB-zE0"/>
                         <outlet property="TextField" destination="0e0-xO-TwT" id="JLE-h9-lE0"/>
+                        <segue destination="eoA-H4-fEi" kind="show" identifier="Edit" id="a6q-kO-ScX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="b6Y-5g-ogE">
+            <objects>
+                <viewController id="eoA-H4-fEi" customClass="EditViewController" customModule="TableView_Image" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FfZ-fj-yzn"/>
+                        <viewControllerLayoutGuide type="bottom" id="5bL-eH-F2l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YMx-Rf-oD6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KR0-BU-y6O">
+                                <rect key="frame" x="123" y="52" width="155" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWz-7G-jtn">
+                                <rect key="frame" x="115" y="153" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ok"/>
+                                <connections>
+                                    <action selector="OkClick:" destination="eoA-H4-fEi" eventType="touchUpInside" id="bET-zG-0dz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="EditTxt" destination="KR0-BU-y6O" id="OoP-7B-WAR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pkt-Ym-04k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="716" y="25.637181409295355"/>
         </scene>
     </scenes>
 </document>

@@ -40,7 +40,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         cell.Lbl.text = arr[indexPath.row]
         return cell
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {        
         if editingStyle == .delete
         {
@@ -49,7 +49,23 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             NSLog("Row %i Deleted", indexPath.row)*/
             tableView.reloadData()
         }
+    }*/
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
+    {
+        let Edit = UITableViewRowAction(style: .normal, title: "update"){
+            action,indexPath in
+            self.performSegue(withIdentifier: "Edit", sender: self)
+            
+        }
+        
+        let delete = UITableViewRowAction(style: .default, title: "delete"){
+            action,indexPath in
+             self.arr.remove(at: indexPath.row)
+            self.TableView.reloadData()
+        }
+        return [Edit,delete]
     }
+    
     /*func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle
     {
         return 3
