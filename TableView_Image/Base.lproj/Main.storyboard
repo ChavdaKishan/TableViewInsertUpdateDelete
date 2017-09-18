@@ -31,7 +31,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wue-XM-9Nf">
                                 <rect key="frame" x="300" y="72" width="75" height="30"/>
-                                <state key="normal" title="ADD"/>
+                                <state key="normal" title="Insert"/>
                                 <connections>
                                     <action selector="AddClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rpQ-mA-yeo"/>
                                 </connections>
