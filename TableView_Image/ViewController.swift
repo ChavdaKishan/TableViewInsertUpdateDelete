@@ -18,6 +18,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        TextField.attributedPlaceholder = NSAttributedString(string: "Enter Inserted Data", attributes: [NSForegroundColorAttributeName:UIColor.white])
     }
 
     override func didReceiveMemoryWarning()
@@ -62,9 +63,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             self.present(alert,animated: false)
         }
         
-        let delete = UITableViewRowAction(style: .default, title: "delete")
-        {
-            action,indexPath in
+        let delete = UITableViewRowAction(style: .default, title: "delete") { (action,indexPath) in
             self.arr.remove(at: indexPath.row)
             self.TableView.reloadData()
         }
@@ -72,11 +71,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         return [Update,delete]
     }
     
-    /*func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle
-    {
-        return 3
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
